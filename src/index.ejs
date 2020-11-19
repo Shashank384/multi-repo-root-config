@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Discover Single-SPA</title>
+  <meta name="importmap-type" content="systemjs-importmap" />
+  <script type="systemjs-importmap" src="//single-spa-demo.s3-us-west-2.amazonaws.com/%40thawkin3/importmap.json"></script>
+  <% if (isLocal) { %>
+    <script type="systemjs-importmap">
+      {
+        "imports": {
+          "@MIT/root-config": "http://localhost:9000/root-config.js",
+          "login": "http://localhost:9001/MIT-login.js",
+          "admin": "http://localhost:9002/MIT-admin.js",
+          "react": "https://cdn.jsdelivr.net/npm/react@16.13.1/umd/react.production.min.js",
+          "react-dom": "https://cdn.jsdelivr.net/npm/react-dom@16.13.1/umd/react-dom.production.min.js"
+        }
+      }
+    </script>
+  <% } %>
+
+  <script src="//cdn.jsdelivr.net/npm/import-map-overrides/dist/import-map-overrides.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/systemjs/dist/system.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/systemjs/dist/extras/amd.min.js"></script>
+  <script src="//cdn.jsdelivr.net/npm/systemjs/dist/extras/named-exports.min.js"></script>
+  <style>
+    body, html { margin: 0; padding: 0; font-size: 16px; font-family: Arial, Helvetica, sans-serif; height: 100%; }
+    body { display: flex; flex-direction: column; }
+    * { box-sizing: border-box; }
+  </style>
+</head>
+<body>
+  
+  
+  <main> 
+    <div id="login-container"></div>
+    <div id="admin-container"></div>
+  </main>
+  <script>
+    System.import('@MIT/root-config');
+  </script>
+  <import-map-overrides-full show-when-local-storage="devtools" dev-libs></import-map-overrides-full>
+</body>
+</html>
